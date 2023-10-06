@@ -6,7 +6,7 @@
 #    By: syakovle <syakovle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/25 15:07:14 by syakovle          #+#    #+#              #
-#    Updated: 2023/08/29 16:38:46 by syakovle         ###   ########.fr        #
+#    Updated: 2023/09/27 16:34:13 by syakovle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FILES = Zombie.cpp		\
 		zombiehorde.cpp
 
 OBJ = $(SRC:.cpp=.o) $(FILES:.cpp=.o)
-CC = g++
+CXX = c++
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -g3 -std=c++98 -pedantic
 
@@ -24,7 +24,7 @@ NAME = zombiehorde
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 	$(RM) $(OBJ)
