@@ -97,46 +97,46 @@ bool Btc::validDate(std::string date)
 	double doublevalue = strtod(splitdate[0].c_str(), &ptr);
 	if (*ptr != 0 || fmod(doublevalue, 1) != 0)
 	{
-		std::cout << "invalid year: " << splitdate[0] << std::endl;
+		std::cout << date << "invalid year: " << splitdate[0] << std::endl;
 		return false;
 	}
 	if (doublevalue < 2009)
 	{
-		std::cout << "invalid year, must be later than 2008" << std::endl;
+		std::cout << date << "invalid year, must be later than 2008" << std::endl;
 		return false;
 	}
 	if (doublevalue > 2023)
 	{
-		std::cout << "asking for predictions ? ;o" << std::endl;
+		std::cout << date << "asking for predictions ? ;o" << std::endl;
 		return false;
 	}
 	int year = static_cast<int>(doublevalue);
 	doublevalue = strtod(splitdate[1].c_str(), &ptr);
 	if (*ptr != 0)
 	{
-		std::cout << "invalid month: " << splitdate[1] << std::endl;
+		std::cout << date << "invalid month: " << splitdate[1] << std::endl;
 		return false;
 	}
 	if (doublevalue < 1 || doublevalue > 12)
 	{
-		std::cout << "invalid month, must be between 1 (january) and 12 (december)" << std::endl;
+		std::cout << date << "invalid month, must be between 1 (january) and 12 (december)" << std::endl;
 		return false;
 	}
 	int month = static_cast<int>(doublevalue);
 	doublevalue = strtod(splitdate[2].c_str(), &ptr);
 	if (*ptr != 0 || fmod(doublevalue, 1) != 0)
 	{
-		std::cout << "invalid day: " << splitdate[2] << std::endl;
+		std::cout << date << "invalid day: " << splitdate[2] << std::endl;
 		return false;
 	}
 	if (doublevalue < 1)
 	{
-		std::cout << "invalid day: must be greater than 0" << std::endl;
+		std::cout << date << " => invalid day: must be greater than 0" << std::endl;
 		return false;
 	}
 	if (!dateMonthExist(doublevalue, month, year))
 	{
-		std::cout << "day doesn't exist in this month" << std::endl;
+		std::cout << date << " => day doesn't exist in this month" << std::endl;
 		return false;
 	}
 	this->_day = static_cast<int> (doublevalue);

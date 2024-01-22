@@ -23,6 +23,7 @@ public:
 	bool ValueIsInList(int value);
 	void sort(int mergesize);
 	void setlist(long unsigned int i);
+	template <typename T>
 	int ft_merge(long unsigned int i);
 	void ft_insert();
 	void calculate(int ac, char** av);

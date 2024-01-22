@@ -90,11 +90,13 @@ void	PmergeMe::setlist(long unsigned int i)
 	}
 }
 
+template <typename T>
 int PmergeMe::ft_merge(long unsigned int mergesize)
 {
 	int i = 0;
 	this->deque.clear();
-	for (std::list<int>::iterator it = this->list.begin(); it != this->list.end(); it++)
+	typedef typename std::iterator_traits<T>::value_type val_t;
+	for (val_t it = this->list.begin(); it != this->list.end(); it++)
 	{
 		this->deque.push_back(*it);
 		i++;
@@ -110,7 +112,8 @@ int PmergeMe::ft_merge(long unsigned int mergesize)
 	return (1);
 }
 
-static int issorted(std::list<int> container)
+template <typename T>
+static int issorted(T container)
 {
 	std::list<int>::iterator it = container.begin();
 	int currentvalue = *it;
@@ -123,11 +126,12 @@ static int issorted(std::list<int> container)
 			return (false);
 		}
 		currentvalue = nextvalue;
-		nextvalue = *it;
 		it++;
+		nextvalue = *it;
 	}
 	return (true);
 }
+
 
 void	PmergeMe::ft_insert()
 {
@@ -173,6 +177,6 @@ void PmergeMe::calculate(int ac, char **av)
 	gettimeofday(&tim, NULL);
 	double t2 = tim.tv_usec;
 	ft_display(this->list);
-	std::cout << "swap: " << this->swap << std::endl;
+	std::cout << "number of swap: " << this->swap << std::endl;
 	std::cout << "time to process a range of " << this->list.size() << "elements with std::list : " << t2 - t1 << "us" << std::endl;
 }
